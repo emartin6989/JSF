@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+  xmlns = "http://www.w3.org/1999/xhtml" 
+  xmlns:h = "http://java.sun.com/jsf/html" 
+  xmlns:f = "http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Insert title here</title>
+</head>
+<body>
+coucou
+#{mbean1.message}
+<h:form>
+Saisie data : <h:inputText id="inputData" value ="#{mbean1.data}">
+<f:validateLength maximum="15"></f:validateLength>
+</h:inputText><br/>
+<h:message for="inputData"></h:message>
+
+
+Saisie data2 : <h:inputText value ="#{mbean1.data2}"></h:inputText><br/>
+<!--  Saisie data et data2 : <h:outputText value="#{mbean1.lesDeux}"></h:outputText><br/>-->
+<h:commandButton type="submit" value="go"></h:commandButton>
+<h:commandButton type="submit" value="go to results" action="jsf2result"></h:commandButton>
+<h:commandButton type="submit" value="go to results conditionnels" action="#{mbean1.goConditionnel}"></h:commandButton>
+<h:commandButton type="submit" value="go navigation rule 1" action="pagesuivante"></h:commandButton>
+<h:commandButton type="submit" value="go navigation cas d'erreur" action="#{mbean1.testErreur}"></h:commandButton>
+</h:form>
+</body>
+</html>
