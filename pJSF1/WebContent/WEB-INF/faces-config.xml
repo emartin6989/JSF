@@ -15,5 +15,8 @@
 			<to-view-id>jsf2error.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+	<validator>
+	<validator-id>civiliteValidator</validator-id>
+	<validator-class>pJSF1.jsf.exos.MonValideurCivilite</validator-class>
+	</validator>
 </faces-config>

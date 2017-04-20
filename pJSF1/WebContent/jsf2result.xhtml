@@ -8,9 +8,15 @@
 </head>
 <body>
  Saisie data et data2 : <h:outputText value="#{mbean1.lesDeux}"></h:outputText><br/>
-<h:form>
-<h:commandButton type ="submit" value="retour" action="jsf">
+<h:form id="leFormResult">
+
+Saisie dataResult : <h:inputText value ="#{mbeanresult.dataResult}"></h:inputText>
+<h:commandButton type ="submit" value="go">
 </h:commandButton>
+<h:commandButton type ="submit" value="retour" action="jsf">
+</h:commandButton><Br/>
+<h:outputText id="inputDataResult" value ="Result" ></h:outputText><br/>
+<h:message for="inputDataResult"></h:message><br/>
 </h:form>
 </body>
 </html>

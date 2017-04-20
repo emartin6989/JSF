@@ -1,8 +1,9 @@
 package pJSF1.jsf.exos;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "mbean1", eager = true)
 // @SessionScoped
@@ -15,6 +16,7 @@ public class MBean1 {
 	private String data = "";
 	private String data2 = "";
 	private String lesDeux = "";
+	private String civilite = "";
 
 	public String getMessage() {
 		compteur++;
@@ -45,10 +47,24 @@ public class MBean1 {
 	public void setData2(String data2) {
 		this.data2 = data2;
 		System.out.println("setting data : " + data2);
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		ctx.addMessage("leForm:inputData2", new FacesMessage("message inputData2 depuis le bean"));
+		ctx.addMessage("leForm:inputDataXXX", new FacesMessage("message inputDataXXX depuis le bean"));
+		ctx.addMessage("leFormResult:inputDataResult", new FacesMessage("message inputDataResult depuis le bean"));
+		ctx.addMessage(null, new FacesMessage("message à tous depuis le bean"));
 	}
 
 	public void setLesDeux(String lesDeux) {
 		this.lesDeux = lesDeux;
+	}
+
+	public String getCivilite() {
+		return civilite;
+	}
+
+	public void setCivilite(String civilite) {
+		System.out.println("setting civilite " + civilite);
+		this.civilite = civilite;
 	}
 
 	public MBean1() {
