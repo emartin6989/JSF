@@ -5,61 +5,64 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import service.ClientService;
+import service.IClientService;
+
 @ManagedBean(name = "mbclients", eager = true)
 @SessionScoped
 public class MBClients {
 
-	private ArrayList<Client> clients = new ArrayList<Client>();
-	private Client clientCourant= new Client();
-	private int nombre;
-
-	public MBClients() {
-		System.out.println("Constructeur MBClients");
-		clients.add(new Client("Dupont", "Jean"));
-		clients.add(new Client("Durand", "Paul"));
-		clients.add(new Client("Villar", "Théo"));
-	}
-
-	public ArrayList<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(ArrayList<Client> clients) {
-		this.clients = clients;
-	}
-
-	public String select(Client client) {
-		this.clientCourant = client;
-		System.out.println("select : " + client.getNom());
-		return "client";
-	}
-
-	public String supprimer() {
-		clients.remove(clientCourant);
-		System.out.println("Le client sélectionner a été supprimé");
-		return "clients";
+	private IClientService ics;
+	
+	private Client clientCourant = new Client();
+	
+	public MBClients(){
+		ics = new ClientService();
 	}
 	
-	public String ajouter() {
-		Client c = new Client();
-		c.setNom(clientCourant.getNom());
-		c.setPrenom(clientCourant.getPrenom());
-		clients.add(c);
-		clientCourant = new Client();
-		System.out.println("Le client "+clientCourant.getPrenom()+" "+clientCourant.getNom() +"a bien été ajouté.");
-		return "clients";
-	}
 
 	public Client getClientCourant() {
 		return clientCourant;
 	}
 
-	public void setClientCourant(Client clientCourant) {
-		this.clientCourant = clientCourant;
+
+
+	public ArrayList<Client> getClients() {
+		return ics.getClients();
 	}
 
-	public int getNombre() {
-		return clients.size();
+	public String select(Client client) {
+		this.clientCourant = client;
+		return "client";
 	}
 
+	public String supprimer() {
+		ics.supprimer(clientCourant);
+		return "clients";
+	}
+
+	Client newClient = new Client("", "");
+
+	public Client getNewClient() {
+
+		return newClient;
+	}
+
+	public void setNewClient(Client newClient) {
+
+		this.newClient = newClient;
+	}
+
+	public String ajouter() {
+
+		ics.ajouter(clientCourant);
+
+		clientCourant = new Client("", "");
+
+		return "clients";
+	}
+	
+	public int getNombre(){
+		return ics.getClients().size();
+	}
 }

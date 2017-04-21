@@ -6,18 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 </head>
-<body>	
-<h:form>
-	<h:panelGrid columns="2" border="1" width="200" cellpadding="5">
-		<f:facet name="header">
-			<h:outputText value="Client choisi :" style="color:green" />
-		</f:facet>
-		<h:outputLabel value="Nom :"></h:outputLabel>
-		<h:inputText value="#{mbclients.clientCourant.nom}"></h:inputText>
-		<h:outputLabel value="Prenom :"></h:outputLabel>
-		<h:inputText value="#{mbclients.clientCourant.prenom}"></h:inputText>
-	</h:panelGrid>
-	<h:commandButton type="submit" value="ajouter" action="#{mbclients.ajouter}"></h:commandButton>
+<body>
+	<h:form>
+		<h:panelGrid columns="2" border="1" width="200" cellpadding="5">
+			<f:facet name="header">
+				<h:outputText value="Client choisi :" style="color:green" />
+			</f:facet>
+			<h:outputLabel value="Nom :"></h:outputLabel>
+			<h:inputText value="#{mbclients.clientCourant.nom}"></h:inputText>
+			<h:outputLabel value="Prenom :"></h:outputLabel>
+			<h:inputText value="#{mbclients.clientCourant.prenom}"></h:inputText>
+		</h:panelGrid>
+		<h:commandButton type="submit" value="ajouter"
+			action="#{mbclients.ajouter}"></h:commandButton>
 	</h:form>
 </body>
 </html>
