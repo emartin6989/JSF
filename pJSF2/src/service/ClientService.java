@@ -2,8 +2,13 @@ package service;
 
 import java.util.ArrayList;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
 import pJSF2.jsf.exos.Client;
 
+@ManagedBean(name="clientservice")
+@ApplicationScoped
 public class ClientService implements IClientService {
 
 	private ArrayList<Client> clients = new ArrayList<Client>();

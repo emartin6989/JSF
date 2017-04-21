@@ -3,6 +3,7 @@ package pJSF2.jsf.exos;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import service.ClientService;
@@ -11,15 +12,20 @@ import service.IClientService;
 @ManagedBean(name = "mbclients", eager = true)
 @SessionScoped
 public class MBClients {
-
+	
+	@ManagedProperty(value="#{clientservice}")
 	private IClientService ics;
 	
-	private Client clientCourant = new Client();
-	
-	public MBClients(){
-		ics = new ClientService();
+	public void setIcs(IClientService ics) {
+		this.ics = ics;
 	}
 	
+	public MBClients(){
+		//ics = new ClientService();
+	}
+	
+	
+	private Client clientCourant = new Client();
 
 	public Client getClientCourant() {
 		return clientCourant;
